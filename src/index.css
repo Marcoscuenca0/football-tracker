@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* ===== THEME SYSTEM ===== */
+
+/* Theme: Neon Night (Default) */
+:root,
+[data-theme="neon"] {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a1f35;
+  --bg-card-hover: #232945;
+  --border-color: #2d3555;
+  --text-primary: #f0f4ff;
+  --text-secondary: #8b95b5;
+  --text-muted: #5a6480;
+  --accent-primary: #00f0ff;
+  --accent-secondary: #a855f7;
+  --accent-tertiary: #f43f5e;
+  --team-a: #00f0ff;
+  --team-b: #f43f5e;
+  --ball-color: #facc15;
+  --pitch-bg: #0d3b1e;
+  --pitch-line: rgba(255, 255, 255, 0.35);
+  --pitch-grass-alt: rgba(255, 255, 255, 0.03);
+  --zone-highlight: rgba(0, 240, 255, 0.12);
+  --glow-a: rgba(0, 240, 255, 0.5);
+  --glow-b: rgba(244, 63, 94, 0.5);
+  --glow-ball: rgba(250, 204, 21, 0.6);
+  --nav-bg: rgba(10, 14, 26, 0.92);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --chart-grid: #2d3555;
+}
+
+/* Theme: Clean Day */
+[data-theme="light"] {
+  --bg-primary: #f5f7fb;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f2f8;
+  --border-color: #e2e6f0;
+  --text-primary: #1a1f36;
+  --text-secondary: #5a6480;
+  --text-muted: #9ca3bf;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --accent-tertiary: #ef4444;
+  --team-a: #3b82f6;
+  --team-b: #ef4444;
+  --ball-color: #f59e0b;
+  --pitch-bg: #2d8a4e;
+  --pitch-line: rgba(255, 255, 255, 0.7);
+  --pitch-grass-alt: rgba(255, 255, 255, 0.06);
+  --zone-highlight: rgba(59, 130, 246, 0.15);
+  --glow-a: rgba(59, 130, 246, 0.3);
+  --glow-b: rgba(239, 68, 68, 0.3);
+  --glow-ball: rgba(245, 158, 11, 0.4);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --chart-grid: #e2e6f0;
+}
+
+/* Theme: Pro Navy Gold */
+[data-theme="navy"] {
+  --bg-primary: #0b1128;
+  --bg-secondary: #0f1a3a;
+  --bg-card: #152042;
+  --bg-card-hover: #1c2a55;
+  --border-color: #253565;
+  --text-primary: #edf0ff;
+  --text-secondary: #8892b5;
+  --text-muted: #556085;
+  --accent-primary: #d4a537;
+  --accent-secondary: #5b9cf5;
+  --accent-tertiary: #e85d75;
+  --team-a: #5b9cf5;
+  --team-b: #e85d75;
+  --ball-color: #d4a537;
+  --pitch-bg: #0f3520;
+  --pitch-line: rgba(212, 165, 55, 0.35);
+  --pitch-grass-alt: rgba(212, 165, 55, 0.03);
+  --zone-highlight: rgba(212, 165, 55, 0.12);
+  --glow-a: rgba(91, 156, 245, 0.5);
+  --glow-b: rgba(232, 93, 117, 0.5);
+  --glow-ball: rgba(212, 165, 55, 0.6);
+  --nav-bg: rgba(11, 17, 40, 0.94);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.5);
+  --chart-grid: #253565;
+}
+
+/* ===== GLOBAL RESET ===== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#root {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float-in {
+  animation: float-in 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
